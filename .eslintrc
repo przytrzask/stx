@@ -1,0 +1,46 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["prettier", "jsx-a11y", "react"],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  },
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "styled-components",
+            "message": "Please use styled-components/macro instead."
+          }
+        ]
+      }
+    ],
+    "no-use-before-define": 0,
+    "linebreak-style": 0,
+    "prefer-destructuring": 1,
+    "react/destructuring-assignment": 0,
+    "react/jsx-filename-extension": 0,
+    "react/prop-types": 0,
+    "react/require-default-props": 0
+  }
+}

@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+// @flow
+import * as React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+class App extends React.Component<*> {
+  componentDidMount() {}
+
   render() {
     return (
       <div className="App">
@@ -17,7 +20,7 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            stx
           </a>
         </header>
       </div>
