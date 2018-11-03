@@ -8,9 +8,13 @@
     "enzyme-to-json": "^3.3.4",
     "husky": "^1.1.2",
     "lint-staged": "^7.3.0",
-    "react": "^16.7.0-alpha.0",
-    "react-dom": "^16.7.0-alpha.0",
-    "react-scripts": "2.0.5"
+    "lodash": "^4.17.11",
+    "react": "16.7.0-alpha.0",
+    "react-cache": "^2.0.0-alpha.1",
+    "react-dom": "16.7.0-alpha.0",
+    "react-scripts": "2.0.5",
+    "react-select": "^2.1.1",
+    "styled-components": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

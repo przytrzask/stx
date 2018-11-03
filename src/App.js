@@ -1,31 +1,57 @@
 // @flow
 import * as React from 'react';
-import logo from './logo.svg';
+import { sample } from 'lodash/fp';
+import Form from './Form';
+import useApi from './utils';
+import options from './constants';
+import Images from './Images';
+import Button from './Button';
+import Header from './Header';
+
 import './App.css';
 
-class App extends React.Component<*> {
-  componentDidMount() {}
+const App = () => {
+  const getDataTypeValue = () => {
+    const { value } = dataType;
+    if (value === 'random')
+      return sample(options.filter(option => option.value !== 'random')).value;
+    return value;
+  };
+  // flow-disable-next-line missing flow annotation
+  const [count, setCount] = React.useState({ display: 1, value: 1 });
+  // flow-disable-next-line missing flow annotation
+  const [dataType, setDataType] = React.useState(options[0]);
+  const { callApi, state: data, isLoading } = useApi(
+    `http://shibe.online/api/${getDataTypeValue()}?count=${count.value}`,
+  );
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            stx
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+  const setCountDisplay = e => {
+    const { value } = e.target;
+    setCount({ ...count, display: value });
+  };
+
+  const setCountValue = e => {
+    const { value, validity } = e.target;
+    if (validity.valid) setCount({ ...count, value });
+    else setCount({ ...count, display: count.value });
+  };
+
+  return (
+    <div className="App">
+      <Header className="App-header">
+        <Form
+          fetchData={callApi}
+          count={count}
+          onChange={setCountDisplay}
+          onBlur={setCountValue}
+          dataType={dataType}
+          setDataType={setDataType}
+        />
+        <Button action={callApi} isLoading={isLoading} />
+      </Header>
+      <Images images={data} />
+    </div>
+  );
+};
 
 export default App;
