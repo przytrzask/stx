@@ -7,8 +7,8 @@
       "jsx": true
     }
   },
-  "extends": ["airbnb", "prettier", "prettier/react"],
-  "plugins": ["prettier", "jsx-a11y", "react"],
+  "extends": ["airbnb", "plugin:flowtype/recommended","prettier", "prettier/react"],
+  "plugins": ["flowtype", "prettier", "jsx-a11y", "react"],
   "env": {
     "browser": true,
     "commonjs": true,
@@ -24,6 +24,11 @@
     }
   },
   "rules": {
+    "flowtype/generic-spacing": 0,
+    "flowtype/no-unused-expressions": 2,
+    "flowtype/space-after-type-colon": 0,
+    "flowtype/no-types-missing-file-annotation": 0,
+
     "no-restricted-imports": [
       "error",
       {
