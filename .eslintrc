@@ -8,7 +8,7 @@
     }
   },
   "extends": ["airbnb", "plugin:flowtype/recommended","prettier", "prettier/react"],
-  "plugins": ["flowtype", "prettier", "jsx-a11y", "react"],
+  "plugins": ["flowtype", "prettier", "jsx-a11y", "react","react-hooks"],
   "env": {
     "browser": true,
     "commonjs": true,
@@ -28,7 +28,7 @@
     "flowtype/no-unused-expressions": 2,
     "flowtype/space-after-type-colon": 0,
     "flowtype/no-types-missing-file-annotation": 0,
-
+    "react-hooks/rules-of-hooks": "error",
     "no-restricted-imports": [
       "error",
       {
